@@ -15,23 +15,26 @@ void setup() {
 
   // Create canvas
   size(400, 400);
-  
-    // Image will not animate
+
+  // Image will not animate
   noLoop();
 
   // Start saving to the PDF file
   beginRecord(PDF, "output.pdf");
-
 }
 
-//Scan Text input
+//Scan Text input (testing at the moment)
+if (message.charAt(counter) == index.charAt(1)) { 
+  fill(1*code);
+}
 
+rect(boxX,boxY,boxH,boxH);
 
-//Setup Variables
+    //Setup Variables
 
-//Encrypt colour selection
+  //Encrypt colour selection
 
-//Generate image
+  //Generate image
 
-//Output to image file.
+  //Output to image file.
 
