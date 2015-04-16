@@ -4,9 +4,9 @@ import processing.pdf.*;
 
 String message = "top secret";
 String index = "abcdefghijklmnopqrstuvwxyz";
-float code = 2;
+float code = 0.9;
 float boxNum = (width*height) / message.length();
-float boxH =  30;
+float boxH = 30; //sqrt(boxNum);
 float boxX = boxH/2;
 float boxY = boxH/2;
 int counter = 0;
@@ -29,7 +29,7 @@ void draw() {
   while ( counter < message.length () ) {
     //println(message.charAt(counter));
     println((message.charAt(counter)) * code);
-    fill((message.charAt(counter) * code));
+    fill((message.charAt(counter) * (code*counter)), (message.charAt(counter) * (code/counter)), (message.charAt(counter) * (code)));
     rect(boxX, boxY, boxH, boxH);
     boxX= boxX+boxH;
     counter = counter+ 1;
