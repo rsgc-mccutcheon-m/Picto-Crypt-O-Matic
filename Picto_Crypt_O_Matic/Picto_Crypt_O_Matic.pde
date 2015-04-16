@@ -4,9 +4,9 @@ import processing.pdf.*;
 
 String message = "top secret";
 String index = "abcdefghijklmnopqrstuvwxyz";
-int code = 25;
+float code = 2;
 float boxNum = (width*height) / message.length();
-float boxH = sqrt(boxNum);
+float boxH =  30;
 float boxX = boxH/2;
 float boxY = boxH/2;
 int counter = 0;
@@ -21,13 +21,18 @@ void setup() {
 
   // Start saving to the PDF file
   beginRecord(PDF, "output.pdf");
+}
 
+
+void draw() {
   // example of how to access individual characters
-  while ( counter < message.length()) {
-  //println(message.charAt(counter));
-  
-  
-  counter = counter+ 1;
+  while ( counter < message.length () ) {
+    //println(message.charAt(counter));
+    println((message.charAt(counter)) * code);
+    fill((message.charAt(counter) * code));
+    rect(boxX, boxY, boxH, boxH);
+    boxX= boxX+boxH;
+    counter = counter+ 1;
   }
 }
 
