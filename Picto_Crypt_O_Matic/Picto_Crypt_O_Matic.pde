@@ -9,7 +9,7 @@ float boxNum = (width*height) / message.length();
 float boxH = sqrt(boxNum);
 float boxX = boxH/2;
 float boxY = boxH/2;
-int counter = 1;
+int counter = 0;
 //Setup canvas
 void setup() {
 
@@ -17,24 +17,31 @@ void setup() {
   size(400, 400);
 
   // Image will not animate
-  noLoop();
+
 
   // Start saving to the PDF file
   beginRecord(PDF, "output.pdf");
+
+  // example of how to access individual characters
+  while ( counter < message.length()) {
+  //println(message.charAt(counter));
+  
+  
+  counter = counter+ 1;
+  }
 }
 
 //Scan Text input (testing at the moment)
-if (message.charAt(counter) == index.charAt(1)) { 
-  fill(1*code);
-}
+//if (message. (counter) == index.charAt(1)) { 
+//  fill(1*code);
+//}
+//
+//rect(boxX,boxY,boxH,boxH);
 
-rect(boxX,boxY,boxH,boxH);
+//Setup Variables
 
-    //Setup Variables
+//Encrypt colour selection
 
-  //Encrypt colour selection
+//Generate image
 
-  //Generate image
-
-  //Output to image file.
-
+//Output to image file.
