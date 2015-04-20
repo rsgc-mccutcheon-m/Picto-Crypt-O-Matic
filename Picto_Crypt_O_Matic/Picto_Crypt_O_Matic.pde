@@ -2,11 +2,11 @@
 //Picto-Crypt-O-Matic
 import processing.pdf.*;
 
-String message = "Top Secret";
+String message = "Brendan is the man. The original G. Occasionally reffered to as god";
 String index = "abcdefghijklmnopqrstuvwxyz";
 
-float boxNum = 0; //(width*height) / message.length();
-float boxH = 0; //sqrt(boxNum);
+float boxArea = 0; //(width*height) / message.length();
+float boxS = 0; //sqrt(boxNum);
 float boxX = 0; //boxH/2;
 float boxY = 0; //boxH/2;
 int counter = 0;
@@ -16,13 +16,17 @@ void setup() {
 
   // Create canvas
   size(400, 400);
-  float w = width;
-  float h = height;
-  boxNum = (w*h) / message.length();
-  boxH = sqrt(boxNum);
+  
+  while(sqrt(message.length()) % 1 != 0) { 
+  message = message + " ";
+  }
+  
+  boxArea = (width*height) / message.length();
+  
+  boxS = sqrt(boxArea);
   boxX = 0;
   boxY = 0;
-
+  println(message.length());
   // Start saving to the PDF file
   beginRecord(PDF, "output.pdf");
 }
@@ -30,7 +34,7 @@ void setup() {
 
 void draw() {
 
-  float code = sq(counter)+(2*counter)+0;
+  float code = 0.2;
   // Loop scans through message
   while ( counter < message.length () ) {
 
@@ -42,10 +46,13 @@ void draw() {
     fill((message.charAt(counter) * code), random(255), random(255));
 
     //Create rectangle
-    rect(boxX, boxY, boxH, boxH);
-
+    if (boxX >= width-1) {
+      boxY += boxS;
+      boxX = 0;
+    }
     //Shift loop to next character & rectangle
-    boxX= boxX+boxH;
+    rect(boxX, boxY, boxS, boxS);
+    boxX= boxX+boxS;  
     counter = counter+ 1;
   }
 }
