@@ -1,6 +1,9 @@
 //Mark McCutcheon March 31
 //Picto-Crypt-O-Matic
-import processing.pdf.*;
+
+
+//setup variables
+
 
 String message = "Brendan is the man. The original G. Occasionally reffered to as god";
 String index = "abcdefghijklmnopqrstuvwxyz";
@@ -11,27 +14,28 @@ float boxX = 0; //boxH/2;
 float boxY = 0; //boxH/2;
 int counter = 0;
 float code = sq(counter)+(2*counter)+0;
+
+
 //Setup canvas
 void setup() {
 
   // Create canvas
   size(400, 400);
-  
-  while(sqrt(message.length()) % 1 != 0) { 
-  message = message + " ";
+
+  //Ensure that message.length() is a square number by adding space.
+  while (sqrt (message.length ()) % 1 != 0) { 
+    message = message + " ";
   }
-  
+
+  //Recalculate boxArea based off of new message.length() value.
   boxArea = (width*height) / message.length();
-  
   boxS = sqrt(boxArea);
   boxX = 0;
   boxY = 0;
   println(message.length());
-  // Start saving to the PDF file
-  beginRecord(PDF, "output.pdf");
 }
 
-
+//Begin Draw Setup
 void draw() {
 
   float code = 0.2;
@@ -53,6 +57,9 @@ void draw() {
     //Shift loop to next character & rectangle
     rect(boxX, boxY, boxS, boxS);
     boxX= boxX+boxS;  
+
     counter = counter+ 1;
+    
+     save("pyct.png");
   }
 }
