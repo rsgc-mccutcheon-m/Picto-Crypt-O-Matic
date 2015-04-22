@@ -4,8 +4,9 @@
 
 //setup variables
 
+BufferedReader reader;
 
-String message = "Brendan is the man. The original G. Occasionally reffered to as god";
+String message;
 String index = "abcdefghijklmnopqrstuvwxyz";
 
 float boxArea = 0; //(width*height) / message.length();
@@ -19,8 +20,24 @@ float code = sq(counter)+(2*counter)+0;
 //Setup canvas
 void setup() {
 
+  reader = createReader(message.txt);
+
+
+
+
   // Create canvas
   size(400, 400);
+}
+
+void draw() {
+
+  try {
+    message = reader.readLine();
+  }
+  catch (IOException e) {     
+    e.printStackTrace();
+    line = null;
+  }
 
   //Ensure that message.length() is a square number by adding space.
   while (sqrt (message.length ()) % 1 != 0) { 
@@ -33,10 +50,9 @@ void setup() {
   boxX = 0;
   boxY = 0;
   println(message.length());
-}
 
-//Begin Draw Setup
-void draw() {
+
+  //Begin Draw Setup
 
   float code = 0.2;
   // Loop scans through message
@@ -59,7 +75,7 @@ void draw() {
     boxX= boxX+boxS;  
 
     counter = counter+ 1;
-    
-     save("pyct.png");
+
+    save("pyct.png");
   }
 }
