@@ -5,7 +5,10 @@
 //setup variables
 class Encrypt {
   BufferedReader reader;
-
+  
+ int r;
+ 
+  
   String message;
   String index = "abcdefghijklmnopqrstuvwxyz";
 
@@ -74,7 +77,9 @@ class Encrypt {
         boxY += boxS;
         boxX = 0;
       }
+      
       //Shift loop to next character & rectangle
+     stroke(#C2C6C4);
       rect(boxX, boxY, boxS, boxS);
       boxX= boxX+boxS;  
 
