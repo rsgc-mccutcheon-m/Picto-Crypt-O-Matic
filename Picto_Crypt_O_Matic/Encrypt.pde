@@ -4,14 +4,9 @@
 
 //setup variables
 class Encrypt {
-  BufferedReader reader;
   
- int r;
- 
-  
+  BufferedReader reader;  
   String message;
-  String index = "abcdefghijklmnopqrstuvwxyz";
-
   float boxArea = 0; //(width*height) / message.length();
   float boxS = 0; //sqrt(boxNum);
   float boxX = 0; //boxH/2;
@@ -46,8 +41,6 @@ class Encrypt {
     //Recalculate boxArea based off of new message.length() value.
     boxArea = (width*height) / message.length();
     boxS = sqrt(boxArea);
-    boxX = 0;
-    boxY = 0;
     println(message.length());
   }
 
@@ -68,7 +61,7 @@ class Encrypt {
 
       //println outputs the character that the scanner is at and the ascii value
       print(message.charAt(counter));
-      //print((int) message.charAt(counter) );
+      print((int) message.charAt(counter) );
       //This line decides the fill of the rectangle based off of the character value and other factors
       fill((message.charAt(counter) * code), random(255), random(255));
 
@@ -77,9 +70,9 @@ class Encrypt {
         boxY += boxS;
         boxX = 0;
       }
-      
+
       //Shift loop to next character & rectangle
-     stroke(#C2C6C4);
+      stroke(#C2C6C4);
       rect(boxX, boxY, boxS, boxS);
       boxX= boxX+boxS;  
 
