@@ -4,7 +4,7 @@
 
 //setup variables
 class Encrypt {
-  
+
   BufferedReader reader;  
   String message;
   float boxArea = 0; //(width*height) / message.length();
@@ -12,10 +12,10 @@ class Encrypt {
   float boxX = 0; //boxH/2;
   float boxY = 0; //boxH/2;
   int counter = 0;
-  float code = sq(counter)+(2*counter)+0;
+  float code = 0.2;
 
 
-  //Setup canvas
+    //Setup canvas
   void setupEncrypt() {
 
     reader = createReader("message.txt");
@@ -55,8 +55,8 @@ class Encrypt {
 
     //Begin Draw Setup
 
-      float code = 0.2;
-    // Loop scans through message
+
+      // Loop scans through message
     while ( counter < message.length () ) {
 
       //println outputs the character that the scanner is at and the ascii value
@@ -73,6 +73,7 @@ class Encrypt {
 
       //Shift loop to next character & rectangle
       stroke(#C2C6C4);
+      strokeWeight(2);
       rect(boxX, boxY, boxS, boxS);
       boxX= boxX+boxS;  
 
