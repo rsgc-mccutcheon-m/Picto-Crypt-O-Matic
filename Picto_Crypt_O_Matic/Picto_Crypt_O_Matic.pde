@@ -1,4 +1,4 @@
-//Mark McCutcheon March 31
+//Mark McCutcheon April 30th 2015
 //Picto-Crypt-O-Matic
 
 Encrypt encrypt;
@@ -7,7 +7,10 @@ Input input;
 Decrypt decrypt;
 boolean run1= false;
 boolean run2= false;
+boolean run3= false;
+String message = "";
 int counter = 0;
+
 //Setup canvas
 void setup() {
 
@@ -26,19 +29,36 @@ void draw() {
   }
 
   if (run1 == true) {
+    if (run3 == false) {
     input.setupInput();
-    input.keyPressed();
-
-    if (keyCode == ENTER) {
-      encrypt.setupEncrypt();
+    }
+    if (run3 == true) {
       encrypt.drawEncrypt();
     }
-  }
+
+    if (keyPressed && key==ENTER) {
+        if (run3== false) {
+          encrypt.setupEncrypt();
+          encrypt.drawEncrypt();
+          run3=true;
+        }
+      }
+    }
+  
 
   if (mousePressed && 250<=mouseX && mouseX<=300 && 150<=mouseY && mouseY<=200) {
-    run2= true;
+    run2 = true;
   }
 
   if (run2==true) {
+    decrypt.setupDecrypt();
+    decrypt.takeCodes();
+    decrypt.selectFile();
+  }
+}
+
+void keyPressed() {
+  if (run3== false) {
+  input.keyPressedI();
   }
 }

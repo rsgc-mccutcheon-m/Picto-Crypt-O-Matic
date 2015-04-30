@@ -5,8 +5,7 @@
 //setup variables
 class Encrypt {
 
-  BufferedReader reader;  
-  String message;
+  //BufferedReader reader;  
   float boxArea = 0; //(width*height) / message.length();
   float boxS = 0; //sqrt(boxNum);
   float boxX = 0; //boxH/2;
@@ -15,19 +14,19 @@ class Encrypt {
   float code = 0.2;
 
 
-    //Setup canvas
+  //Setup canvas
   void setupEncrypt() {
 
-    reader = createReader("message.txt");
+    // reader = createReader("message.txt");
 
-    try {
-      message = reader.readLine();
-    }
+    // try {
+    //   message = reader.readLine();
+    // }
 
-    catch (IOException e) {     
-      e.printStackTrace();
-      message = null;
-    }
+    // catch (IOException e) {     
+    //   e.printStackTrace();
+    //   message = null;
+    // }
 
 
     //Ensure that message.length() is a square number by adding space.
@@ -35,8 +34,6 @@ class Encrypt {
       message = message + " ";
     }
 
-
-    // Create canvas
 
     //Recalculate boxArea based off of new message.length() value.
     boxArea = (width*height) / message.length();

@@ -1,32 +1,23 @@
 //Input tab
-
 class Input {
 
+  //Create done message key (enter)
 
-   Boolean run3 = false;
+
+  //Setup input screen   
   void setupInput() { 
-    String message = "";
-    Boolean run3 = false;
-    while( run3== false) {
       background(255); 
       fill(0);
-      text(message, 0, 10);
-    }
-    if (keyCode == ENTER) {
-      run3 = true;
-    }
-    }
- 
+      text(message, 0, 20);
 
-  void keyPressed() {
-    String message = "";
+  }
+
+
+  void keyPressedI() {
     message += key;
-    if (keyCode == SHIFT) {
-      message = message.substring(0, message.length()-1);
-    }
     if (key == BACKSPACE) {
       message = message.substring(0, message.length()-1);
-      if (message.length() > 0) {
+     if (message.length() > 0) {
         message = message.substring(0, message.length()-1);
       }
     }
