@@ -11,7 +11,8 @@ class Decrypt {
   int uncounter = 0;
   String uncode = "";
   Boolean run4 = false;
-  PImage picin;
+  boolean searching = false;
+  PImage picIn;
 
 
   // //Setup canvas
@@ -64,55 +65,22 @@ class Decrypt {
   }
 
   void selectFile() {
-    
-    
-    if (mousePressed && 130<= mouseX && mouseX <= 257 && 300 <=mouseY && mouseY<= 325) {
-    selectInput("Select a file to Import", "File Selected");   }
 
 
+    if (searching == false&&mousePressed && 130<= mouseX && mouseX <= 257 && 300 <=mouseY && mouseY<= 325) {
+      searching = true;
+      selectInput("Select a file to Import", "processFile");
+    }
   }
 
+  void processFile(File selecion) {
 
-      // }
-
-      // void drawEncrypt() {
-
-
-      //   //If message is blank, Stap.
-      //   if ( message == null) { 
-      //     noLoop();
-      //   }
-
-
-      //   //Begin Draw Setup
-
-      //     float code = 0.2;
-      //   // Loop scans through message
-      //   while ( counter < message.length () ) {
-
-      //     //println outputs the character that the scanner is at and the ascii value
-      //     print(message.charAt(counter));
-      //     print((int) message.charAt(counter) );
-      //     //This line decides the fill of the rectangle based off of the character value and other factors
-      //     fill((message.charAt(counter) * code), random(255), random(255));
-
-      //     //Create rectangle
-      //     if (boxX >= width-2) {
-      //       boxY += boxS;
-      //       boxX = 0;
-      //     }
-
-      //     //Shift loop to next character & rectangle
-      //     stroke(#C2C6C4);
-      //     strokeWeight(2);
-      //     rect(boxX, boxY, boxS, boxS);
-      //     boxX= boxX+boxS;  
-
-      //     counter = counter+ 1;
-
-      //     save("pyct.png");
-      //   }
-      // }
-      //}
-      ////
+    if (selection == null) {
+      println("File not found, or user closed window");
+    } else {
+      println("User selected " + selection.getAbsolutePath());
+      picIn = loadImage(selection.getAbsolutePath());
+      background(picIn);
     }
+  }
+}

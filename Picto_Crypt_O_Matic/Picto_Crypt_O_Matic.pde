@@ -30,21 +30,21 @@ void draw() {
 
   if (run1 == true) {
     if (run3 == false) {
-    input.setupInput();
+      input.setupInput();
     }
     if (run3 == true) {
       encrypt.drawEncrypt();
     }
 
     if (keyPressed && key==ENTER) {
-        if (run3== false) {
-          encrypt.setupEncrypt();
-          encrypt.drawEncrypt();
-          run3=true;
-        }
+      if (run3== false) {
+        encrypt.setupEncrypt();
+        encrypt.drawEncrypt();
+        run3=true;
       }
     }
-  
+  }
+
 
   if (mousePressed && 250<=mouseX && mouseX<=300 && 150<=mouseY && mouseY<=200) {
     run2 = true;
@@ -52,13 +52,17 @@ void draw() {
 
   if (run2==true) {
     decrypt.setupDecrypt();
-    decrypt.takeCodes();
     decrypt.selectFile();
+    
+   
   }
 }
 
 void keyPressed() {
+  if (run2==true) {
+    decrypt.takeCodes();
+  }
   if (run3== false) {
-  input.keyPressedI();
+    input.keyPressedI();
   }
 }
