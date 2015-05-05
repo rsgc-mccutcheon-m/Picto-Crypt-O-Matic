@@ -73,14 +73,14 @@ class Decrypt {
     }
   }
 
-  void processFile(File selecion) {
+  // void processFile(File selecion) {
 
-    if (selection == null) {
-      println("File not found, or user closed window");
-    } else {
-      println("User selected " + selection.getAbsolutePath());
-      picIn = loadImage(selection.getAbsolutePath());
-      background(picIn);
-    }
-  }
+  //   if (selection == null) {
+  //     println("File not found, or user closed window");
+  //   } else {
+  //     println("User selected " + selection.getAbsolutePath());
+  //     picIn = loadImage(selection.getAbsolutePath());
+  //     background(picIn);
+  //   }
+  // }
 }
