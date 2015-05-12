@@ -8,8 +8,12 @@ Decrypt decrypt;
 boolean run1= false;
 boolean run2= false;
 boolean run3= false;
+boolean Encode= false;
+boolean runInput = false;
 String message = "";
 int counter = 0;
+float code;
+float codein;
 
 //Setup canvas
 void setup() {
@@ -30,7 +34,13 @@ void draw() {
 
   if (run1 == true) {
     if (run3 == false) {
+      input.setupTakecode();
+    }
+
+    if (runInput == true) {
+      println("heyguys");
       input.setupInput();
+      input.keyPressedI();
     }
     if (run3 == true) {
       encrypt.drawEncrypt();
@@ -53,8 +63,6 @@ void draw() {
   if (run2==true) {
     decrypt.setupDecrypt();
     decrypt.selectFile();
-    
-   
   }
 }
 
@@ -62,7 +70,24 @@ void keyPressed() {
   if (run2==true) {
     decrypt.takeCodes();
   }
+
+  if (Encode == true) {
+    input.inputCode();
+  }
+
   if (run3== false) {
     input.keyPressedI();
+  }
+}
+
+void processFile(File selection) {
+
+  if (selection == null) {
+    println("File not found, or user closed window");
+  } else {
+    println("User selected " + selection.getAbsolutePath());
+    decrypt.picIn= loadImage(selection.getAbsolutePath());
+    image(decrypt.picIn, 0, 0);
+    println("hi");
   }
 }

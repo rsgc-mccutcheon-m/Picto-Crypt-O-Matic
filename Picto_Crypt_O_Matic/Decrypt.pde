@@ -12,6 +12,8 @@ class Decrypt {
   String uncode = "";
   Boolean run4 = false;
   boolean searching = false;
+  Boolean codeIn = false;
+  Boolean lengthIn = false;
   PImage picIn;
 
 
@@ -19,6 +21,7 @@ class Decrypt {
   void setupDecrypt() {
     size(400, 400);
     background(255);
+    textSize(20);
 
     // Open code input window
     fill(142);
@@ -39,8 +42,15 @@ class Decrypt {
   //Take inputs
 
   void takeCodes() {
-    if (keyPressed && run4==false) {
+    if (mouseX >=  130 && mouseY >= 97 && mouseX <= 257 && mouseY <= 137 ) {
+      codeIn = true;
+      println("taterz");
+    } else { 
+      codeIn = false; }
+
+    if (keyPressed && codeIn== true) {
       uncode += key;
+
       if (key == BACKSPACE) {
         uncode = uncode.substring(0, uncode.length()-1);
         if (uncode.length() > 0) {
@@ -48,12 +58,17 @@ class Decrypt {
         }
       }
     }
-    if (keyPressed && keyCode == DOWN) {
-      run4 = true;
-      println("im here");
+
+
+    if (mouseX >= 130 && mouseX <= 257 && mouseY >= 187 && mouseY <=227) { 
+      lengthIn = true;
+    } else {
+     lengthIn = false; 
     }
 
-    if (keyPressed && run4== true) {
+
+
+    if (keyPressed && lengthIn == true) {
       charCount += key;
       if (key == BACKSPACE) {
         charCount = charCount.substring(0, charCount.length()-1);
@@ -73,14 +88,6 @@ class Decrypt {
     }
   }
 
-  // void processFile(File selecion) {
+  
 
-  //   if (selection == null) {
-  //     println("File not found, or user closed window");
-  //   } else {
-  //     println("User selected " + selection.getAbsolutePath());
-  //     picIn = loadImage(selection.getAbsolutePath());
-  //     background(picIn);
-  //   }
-  // }
 }

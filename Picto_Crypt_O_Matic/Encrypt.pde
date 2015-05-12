@@ -11,7 +11,7 @@ class Encrypt {
   float boxX = 0; //boxH/2;
   float boxY = 0; //boxH/2;
   int counter = 0;
-  float code = 0.2;
+  
 
 
   //Setup canvas
