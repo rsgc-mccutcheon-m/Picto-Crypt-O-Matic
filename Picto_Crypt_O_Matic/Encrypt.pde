@@ -28,11 +28,12 @@ class Encrypt {
     //   message = null;
     // }
 
-
+println(code);
     //Ensure that message.length() is a square number by adding space.
     while (sqrt (message.length ()) % 1 != 0) { 
       message = message + " ";
     }
+    println(message.length());
 
 
     //Recalculate boxArea based off of new message.length() value.

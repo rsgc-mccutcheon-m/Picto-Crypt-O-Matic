@@ -40,8 +40,10 @@ void draw() {
     if (runInput == true) {
       println("heyguys");
       input.setupInput();
-      input.keyPressedI();
+      noLoop();
     }
+    
+    loop();
     if (run3 == true) {
       encrypt.drawEncrypt();
     }
@@ -51,6 +53,7 @@ void draw() {
         encrypt.setupEncrypt();
         encrypt.drawEncrypt();
         run3=true;
+        noLoop();
       }
     }
   }
