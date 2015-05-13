@@ -14,7 +14,11 @@ String message = "";
 int counter = 0;
 float code;
 float codein;
-
+import javax.imageio.*;
+import java.awt.image.*;
+BufferedImage image;
+Boolean imageloaded = false;
+PImage picIn;
 //Setup canvas
 void setup() {
 
@@ -26,6 +30,9 @@ void setup() {
   // Create canvas
 
   menu.setupMenu();
+   if (picIn != null) {
+    image(picIn, 0,0);
+  }
 }
 void draw() {
   if (mousePressed && 50<=mouseX && mouseX<=150 && 150<=mouseY && mouseY<=200) {
@@ -42,7 +49,7 @@ void draw() {
       input.setupInput();
       noLoop();
     }
-    
+
     loop();
     if (run3 == true) {
       encrypt.drawEncrypt();
@@ -83,14 +90,39 @@ void keyPressed() {
   }
 }
 
+
 void processFile(File selection) {
+ 
 
   if (selection == null) {
     println("File not found, or user closed window");
   } else {
     println("User selected " + selection.getAbsolutePath());
-    decrypt.picIn= loadImage(selection.getAbsolutePath());
-    image(decrypt.picIn, 0, 0);
-    println("hi");
   }
+
+  try { 
+    image = ImageIO.read(selection);
+    try { imageloaded = ImageIO.write(image, "jpg", new File(sketchPath + "/data/" + selection.getName())); }
+    
+     catch (IOException e) {
+        println("Error occurred writing image file to 'data' folder of sketch.");
+        e.printStackTrace();
+      }
+  }
+
+  catch(IOException e) {
+    image = null;
+    println("Error occurred reading image file.");
+    e.printStackTrace();
+  }
+
+  // if (image != null) {
+  //   try {
+  //     //decrypt.picIn = ImageIO.write(image, "jpg", new File(sketchPath + "/data/" + selection.getName()));
+  //   }
+  //   catch (IOException e) {
+  //     println("Error occurred writing image file to 'data' folder of sketch.");
+  //     e.printStackTrace();
+  //   }
+  // }
 }

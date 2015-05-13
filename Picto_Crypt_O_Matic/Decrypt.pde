@@ -14,7 +14,6 @@ class Decrypt {
   boolean searching = false;
   Boolean codeIn = false;
   Boolean lengthIn = false;
-  PImage picIn;
 
 
   // //Setup canvas
